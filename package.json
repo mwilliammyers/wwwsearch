@@ -1,0 +1,119 @@
+{
+  "name": "wwwsearch",
+  "displayName": "WWW Search",
+  "description": "Search current selection in default browser.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "search",
+    "wwwsearch",
+    "www search",
+    "google",
+    "duckduckgo",
+    "stackoverflow",
+    "searchcode"
+  ],
+  "activationEvents": [
+    "oncommand:extension.wwwsearch.custom",
+    "oncommand:extension.wwwsearch.duckduckgo",
+    "oncommand:extension.wwwsearch.google",
+    "oncommand:extension.wwwsearch.stackoverflow",
+    "oncommand:extension.wwwsearch.searchcode",
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "WWW Search",
+        "properties": {
+          "wwwsearch.prependLanguageId": {
+            "type": "boolean",
+            "default": true,
+            "description": "Constrols whether to prepend the file type to the search query."
+          },
+          "wwwsearch.customUrl": {
+            "type": "string",
+            "default": "https://duckduckgo.com/?q=",
+            "description": "Custom search URL used in the `Search custom URL` command."
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.wwwsearch.custom",
+        "title": "Search with custom URL",
+        "category": "WWW Search"
+      },
+      {
+        "command": "extension.wwwsearch.google",
+        "title": "Search Google",
+        "category": "WWW Search"
+      },
+      {
+        "command": "extension.wwwsearch.duckduckgo",
+        "title": "Search DuckDuckGo",
+        "category": "WWW Search"
+      },
+      {
+        "command": "extension.wwwsearch.stackoverflow",
+        "title": "Search StackOverflow",
+        "category": "WWW Search"
+      },
+      {
+        "command": "extension.wwwsearch.searchcode",
+        "title": "Search searchcode",
+        "category": "WWW Search"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.wwwsearch.custom",
+          "group": "search",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.wwwsearch.duckduckgo",
+          "group": "search",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.wwwsearch.google",
+          "group": "search",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.wwwsearch.stackoverflow",
+          "group": "search",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.wwwsearch.searchcode",
+          "group": "search",
+          "when": "editorHasSelection"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.39.0",
+    "eslint": "^5.13.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.2.0"
+  }
+}
